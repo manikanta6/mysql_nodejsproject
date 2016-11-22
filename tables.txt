@@ -1,0 +1,47 @@
+CREATE TABLE buyer
+(
+OID Integer PRIMARY KEY AUTO_INCREMENT,
+owner_name varchar(255) NOT NULL,
+pet_name varchar(255) NOT NULL,
+Address varchar(255),
+City varchar(255),
+Age varchar(5)
+);
+
+CREATE Table car
+(
+
+CID integer PRIMARY KEY AUTO_INCREMENT,
+model varchar(255),
+engine varchar(255),
+color varchar(255)
+
+
+);
+
+CREATE Table booked
+(
+
+OID integer,
+CID integer,
+ 
+FOREIGN KEY (OID) REFERENCES buyer(OID),
+
+FOREIGN KEY (CID) REFERENCES car(CID)
+
+);
+
+CREATE Table ownerreg
+(
+
+oname varchar(15),
+password varchar(15)
+
+);
+CREATE Table sllerreg
+(
+oname varchar(15),
+password varchar(15)
+
+);
+
