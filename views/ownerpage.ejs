@@ -68,7 +68,8 @@
                 <td>carmodel</td>
                 
                 <td>color</td>
-
+                 
+                 
                                     
                 </tr>
                
@@ -78,15 +79,19 @@
    <td><%= username[i].pet_name %></td>
    <td><%= username[i].model %></td>
    <td><%= username[i].color %></td>
+   <td><img src="<%=username[1].img%>"></td>
            </tr>          
 <% } %>
 
-             
+                                 
+
+                                 
+                               
 
             </tbody>
         </table>
         
-        <a href="/appointment?id=<%= username[0].owner_name %>" class="btn btn-success" >book one more car</a>
+        <a href="/book?id=<%= username[0].owner_name %>" class="btn btn-success" >book one more car</a>
 
     </div>
 

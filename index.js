@@ -60,7 +60,7 @@ app.get('/newcars',function(req,res){
 app.get('/ologincheck',function(req,res){
 	var cuser=req.query.username;
 	var cpass=req.query.password;
-	connection.query('select * from ownerreg where oname= ? ',cuser,function(err,result){
+	connection.query('select * from ownerreg where oname= ?',cuser,function(err,result){
         console.log(cuser+'test');
         console.log(result[0].password+'test');
 		if(cpass==result[0].password)
@@ -84,7 +84,7 @@ app.get('/ologincheck',function(req,res){
 
 
 
-app.get('/appointment',function(req,res){
+app.get('/book',function(req,res){
 var username=req.query.id;
 console.log(username);
 
@@ -93,11 +93,11 @@ connection.query('select * from car' , function(err,  rows ,fields)
 var hel=[{cars:rows},{username:username}];
 console.log(hel[1].username);
 console.log(hel);
-		res.render('appointment',{hello:hel});
+		res.render('book',{hello:hel});
 	}); 				
 });
 
-app.post('/appointment',function(req,res){
+app.post('/book',function(req,res){
 var username=req.query.id;
 var carname=req.body.cname;
 var color=req.body.color;
@@ -106,7 +106,7 @@ console.log(username+"username");
 connection.query('select OID from buyer where owner_name=?',username,function(err,result,fields)
 {
 	console.log(result[0].OID);
-connection.query('select * from car where model = ?',carname,function(err,rows,fields)
+connection.query('select * from car where model =?',carname,function(err,rows,fields)
 {
 	console.log(rows[0].CID);
 
