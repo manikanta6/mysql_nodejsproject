@@ -20,25 +20,6 @@ connection.connect(function(err) {
     console.error('error connecting: ' + err.stack);
     return;
   }});
-var owner=
- [
-	 {	oname: 'madhu',
-	 	password: '123456'
-	 },
-	 {	oname: 'kiran',
-	 	password: '123456'
-	 }
-];
-var doctor=
- [
-	 {	dname: 'madhu',
-	 	password: '123456'
-	 },
-	 {	dname: 'kiran',
-	 	password: '123456'
-	 }
-];
-
 
 app.get('/ologin',function(req,res){
 	res.sendFile(__dirname +'/public/ownerlogin.html');
@@ -48,7 +29,8 @@ app.get('/newcars',function(req,res){
 	var model=req.query.model;
 	var engine=req.query.engine;
 	var color=req.query.color;
-	n={model:model,engine:engine,color:color}
+	var image=req.query.image;
+	n={model:model,engine:engine,color:color,image:image}
 	connection.query('insert into car set ?',n,function(err,rows)
 	{   
 		res.render('success_in',{});
@@ -130,7 +112,7 @@ app.post("/createowner",function(req,res){
 	var f=req.body.city;
 	var g=req.body.age;
 	console.log(a);
-	console.log(owner);
+	//console.log(owner);
 	var o={
 			owner_name:a,pet_name:c,Address:e,City:f,Age:g
 	};
@@ -151,5 +133,5 @@ connection.query('insert into buyer set ?', o, function (err, result) {
 
 })
 
-app.listen(3000);
+app.listen(8080);
 console.log("Express server listening on port 3000 ");
